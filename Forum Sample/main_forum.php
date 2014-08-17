@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 $host="localhost"; // Host name 
 $username=""; // Mysql username 
@@ -31,11 +31,11 @@ $result=mysql_query($sql);
     while($rows=mysql_fetch_array($result)){
         ?>
         <tr>
-            <td bgcolor="#FFFFFF"><? echo $rows['id']; ?></td>
-            <td bgcolor="#FFFFFF"><a href="view_topic.php?id=<? echo $rows['id']; ?>"><? echo $rows['topic']; ?></a><BR></td>
-            <td align="center" bgcolor="#FFFFFF"><? echo $rows['view']; ?></td>
-            <td align="center" bgcolor="#FFFFFF"><? echo $rows['reply']; ?></td>
-            <td align="center" bgcolor="#FFFFFF"><? echo $rows['datetime']; ?></td>
+            <td bgcolor="#FFFFFF"><?php echo $rows['id']; ?></td>
+            <td bgcolor="#FFFFFF"><?php echo "<a href=view_topic.php?id=", $rows['id'], ">"; ?><?php echo $rows['topic'];?></a><BR></td>
+            <td align="center" bgcolor="#FFFFFF"><?php echo $rows['view']; ?></td>
+            <td align="center" bgcolor="#FFFFFF"><?php echo $rows['reply']; ?></td>
+            <td align="center" bgcolor="#FFFFFF"><?php echo $rows['datetime']; ?></td>
         </tr>
 
 <?php

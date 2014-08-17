@@ -22,19 +22,19 @@ $rows=mysql_fetch_array($result);
     <tr>
         <td><table width="100%" border="0" cellpadding="3" cellspacing="1" bordercolor="1" bgcolor="#FFFFFF">
                 <tr>
-                    <td bgcolor="#F8F7F1"><strong><? echo $rows['topic']; ?></strong></td>
+                    <td bgcolor="#F8F7F1"><strong><?php echo $rows['topic']; ?></strong></td>
                 </tr>
 
                 <tr>
-                    <td bgcolor="#F8F7F1"><? echo $rows['detail']; ?></td>
+                    <td bgcolor="#F8F7F1"><?php echo $rows['detail']; ?></td>
                 </tr>
 
                 <tr>
-                    <td bgcolor="#F8F7F1"><strong>By :</strong> <? echo $rows['name']; ?> <strong>Email : </strong><? echo $rows['email'];?></td>
+                    <td bgcolor="#F8F7F1"><strong>By :</strong> <?php echo $rows['name']; ?> <strong>Email : </strong><?php echo $rows['email'];?></td>
                 </tr>
 
                 <tr>
-                    <td bgcolor="#F8F7F1"><strong>Date/time : </strong><? echo $rows['datetime']; ?></td>
+                    <td bgcolor="#F8F7F1"><strong>Date/time : </strong><?php echo $rows['datetime']; ?></td>
                 </tr>
             </table></td>
     </tr>
@@ -54,27 +54,27 @@ while($rows=mysql_fetch_array($result2)){
                     <tr>
                         <td bgcolor="#F8F7F1"><strong>ID</strong></td>
                         <td bgcolor="#F8F7F1">:</td>
-                        <td bgcolor="#F8F7F1"><? echo $rows['a_id']; ?></td>
+                        <td bgcolor="#F8F7F1"><?php echo $rows['a_id']; ?></td>
                     </tr>
                     <tr>
                         <td width="18%" bgcolor="#F8F7F1"><strong>Name</strong></td>
                         <td width="5%" bgcolor="#F8F7F1">:</td>
-                        <td width="77%" bgcolor="#F8F7F1"><? echo $rows['a_name']; ?></td>
+                        <td width="77%" bgcolor="#F8F7F1"><?php echo $rows['a_name']; ?></td>
                     </tr>
                     <tr>
                         <td bgcolor="#F8F7F1"><strong>Email</strong></td>
                         <td bgcolor="#F8F7F1">:</td>
-                        <td bgcolor="#F8F7F1"><? echo $rows['a_email']; ?></td>
+                        <td bgcolor="#F8F7F1"><?php echo $rows['a_email']; ?></td>
                     </tr>
                     <tr>
                         <td bgcolor="#F8F7F1"><strong>Answer</strong></td>
                         <td bgcolor="#F8F7F1">:</td>
-                        <td bgcolor="#F8F7F1"><? echo $rows['a_answer']; ?></td>
+                        <td bgcolor="#F8F7F1"><?php echo $rows['a_answer']; ?></td>
                     </tr>
                     <tr>
                         <td bgcolor="#F8F7F1"><strong>Date/Time</strong></td>
                         <td bgcolor="#F8F7F1">:</td>
-                        <td bgcolor="#F8F7F1"><? echo $rows['a_datetime']; ?></td>
+                        <td bgcolor="#F8F7F1"><?php echo $rows['a_datetime']; ?></td>
                     </tr>
                 </table></td>
         </tr>
@@ -125,7 +125,7 @@ mysql_close();
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><input name="id" type="hidden" value="<? echo $id; ?>"></td>
+                        <td><?php echo "<input name=\"id\" type=\"hidden\" value=", $id,">"; ?></td>
                         <td><input type="submit" name="Submit" value="Submit"> <input type="reset" name="Submit2" value="Reset"></td>
                     </tr>
                 </table>
