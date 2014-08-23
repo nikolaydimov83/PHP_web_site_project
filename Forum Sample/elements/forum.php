@@ -1,20 +1,9 @@
-    <?php
+        <?php
 
-$host="localhost"; // Host name 
-$username=""; // Mysql username 
-$password=""; // Mysql password 
-$db_name="test"; // Database name
-$tbl_name="forum_question"; // Table name 
-
-// Connect to server and select databse.
-$con = mysql_connect("$host", "$username", "$password")or die("cannot connect");
-mysql_select_db($db_name, $con)or die("cannot select DB");
-
-$sql="SELECT * FROM $tbl_name ORDER BY id DESC";
-// OREDER BY id DESC is order result by descending
-
-$result=mysql_query($sql);
-?>
+    $getter;
+    $getter = new DatabaseGetter("test");
+    $result = $getter->GetTable("forum_question");
+    ?>
 
 <table width="90%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CCCCCC">
     <tr>
@@ -28,7 +17,7 @@ $result=mysql_query($sql);
     <?php
 
     // Start looping table row
-    while($rows=mysql_fetch_array($result)){
+    while($rows=mysqli_fetch_assoc($result)){
         ?>
         <tr>
             <td bgcolor="#FFFFFF"><?php echo $rows['id']; ?></td>
@@ -41,7 +30,6 @@ $result=mysql_query($sql);
 <?php
 // Exit looping and close connection 
     }
-    mysql_close();
     ?>
 
     <tr>
