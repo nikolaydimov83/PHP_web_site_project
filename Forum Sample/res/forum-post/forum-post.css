@@ -1,0 +1,63 @@
+:host {
+}
+
+/* To ensure your styling works under the Shadow DOM polyfill, see
+   www.polymer-project.org/docs/polymer/styling.html#directives */
+polyfill-next-selector { content: ':host > h2'; }
+::content h2 {
+  color: blue;
+}
+span{
+	display: inline-block;
+	margin-top: 3em;
+	text-align: center;
+}
+div{
+	font-family: "Open Sans", "SegoeUI", "Roboto Cond";
+	font-size: 1em;
+
+}
+#posthead{
+	width: 80%;
+	height: 120px;
+	margin-right: auto;
+	margin-left:auto;
+	margin-bottom: 40px;
+	
+	position: relative;
+  	border-radius: inherit;
+  	overflow: hidden;
+  	box-sizing: border-box;
+}
+.postID{
+	width: 5%;
+	margin-right: 2em;
+}
+.postTopic{
+	width: 50%;
+	text-align: left;
+}
+.postViews{
+	width: 10%
+}
+.postReplies{
+	width: 10%;
+}
+.postLastPost{
+	width: 18%;
+}
+#ripple{
+	color: #ffda00;
+	position: absolute;
+	box-sizing:border-box;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	user-select: none;
+	--webkit-user-select: none;
+	-moz-user-select: none;
+}
+#shadow-container {
+  border-radius: inherit;
+}

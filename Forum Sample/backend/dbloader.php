@@ -36,25 +36,26 @@ class DatabaseGetter
         $this->con->connect() or die("Cannot connect to DB");
         // Selects a specific from specified table and returns it.
         $query = "SELECT * FROM $table WHERE id='$row'";
-        return $this->con->query($query) or die("Wrong String!");
-        $this->con->close();
+        $result = mysqli_query($this->con, $query) or die("Wrong String!");
+        return $result;
     }
     public function FindData($table, $parameter, $parameterValue, $order="DESC"){
         $this->con->connect() or die("Cannot connect to DB");
         $query = "SELECT * FROM $table WHERE $parameter='$parameterValue' BY $order";
-        return $this->con->query($query) or die("Wrong String!");
-        $this->con->close();
+        $result = mysqli_query($this->con, $query) or die("Wrong String!");
+        return $result;
     }
     public function UpdateData($table, $row, $parameter, $newvalue){
         $this->con->connect() or die("Cannot connect to DB");
         $query = "UPDATE $table SET $parameter='$newvalue' WHERE id='$row'";
-        $this->con->close();
+        mysqli_query($this->con, $query) or die("Wrong String!");
     }
     public function AddData($table, $data=array()){
         $this->con->connect() or die("Cannot connect to DB");
         $query = "INSERT INTO $table VALUES $data";
-        $this->con->close();   
+    }
+    public function Kill(){
+        $this->con->close();
+        unset($this);
     }
 }
-$thing = new DatabaseGetter("test");
-var_dump($thing->GetTable('forum_question'));
