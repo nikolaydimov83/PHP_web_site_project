@@ -7,11 +7,7 @@ polyfill-next-selector { content: ':host > h2'; }
 ::content h2 {
   color: blue;
 }
-span{
-	display: inline-block;
-	margin-top: 3em;
-	text-align: center;
-}
+
 div{
 	font-family: "Open Sans", "SegoeUI", "Roboto Cond";
 	font-size: 1em;
@@ -22,29 +18,48 @@ div{
 	height: 120px;
 	margin-right: auto;
 	margin-left:auto;
-	margin-bottom: 40px;
-	
+	margin-bottom: 20px;
+	display: block;
 	position: relative;
   	border-radius: inherit;
   	overflow: hidden;
   	box-sizing: border-box;
 }
+div{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	position: relative;
+	top: 20%;
+
+}
+span{
+	vertical-align: middle;
+}
 .postID{
 	width: 5%;
 	margin-right: 2em;
 }
-.postTopic{
+#posthead .postTopic{
 	width: 50%;
+	font-size: 1.3em;
 	text-align: left;
+	text-transform: capitalize;
 }
 .postViews{
+	font-size: 1.3em;
 	width: 10%
 }
 .postReplies{
+	font-size: 1.3em;
 	width: 10%;
 }
 .postLastPost{
+	font-size: 1.3em;
 	width: 18%;
+}
+div .notation{
+	font-size: 0.8em;
 }
 #ripple{
 	color: #ffda00;

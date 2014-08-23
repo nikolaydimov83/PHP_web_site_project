@@ -1,34 +1,48 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link href="../paper-shadow/paper-shadow.html" rel="import">
-
 <polymer-element name="forum-post" attributes="id topic views replies date postdetails z" role="button" >
-
     <template>
         <link rel="stylesheet" href="forum-post.css">
         <div id="posthead">
             <paper-shadow></paper-shadow>
             <paper-ripple id="ripple"></paper-ripple>
-            <span class="postID">{{id}}</span>
-            <span class="postTopic" >{{topic}}</a></span>
-            <span class="postViews">{{views}}</span>
-            <span class="postReplies">{{replies}}</span>
-            <span class="postLastPost">{{date}}</span> 
+            <div class="postID">
+                #<span>{{id}}</span>
+            </div>
+            <div class="postTopic" >
+                <span>{{topic}}</span>
+            </div>
+            <div class="postViews">
+                <span>{{views}}</span>
+                <br>
+                <span class="notation">Views</span>
+            </div>
+            <div class="postReplies">
+                <span>{{replies}}</span>
+                <br>
+                <span class="notation">Replies</span>
+            </div>
+            <div class="postLastPost">
+
+                <span class="notation">Posted on</span>
+                <br>
+                <span>{{date}}</span>
+            </div>
         </div>
     </template>
     <script>
-        Polymer('forum-post', {
-            publish:{
-                id: '',
-                date: '',
-                views: '',
-                replies: '',
-                topic: '',
-                z: '1'
-            },
-
-            ready: function(){
-            }
-        });
+            Polymer('forum-post', {
+                publish:{
+                    id: '',
+                    date: '',
+                    views: '',
+                    replies: '',
+                    topic: '',
+                    z: '1'
+                },
+                ready: function(){
+                }
+            });
     </script>
 </polymer-element>
