@@ -1,8 +1,8 @@
-<?php
+<?php 
 session_start();
 //connect.php
 $server	    = 'localhost';
-$username	= '';
+$username	= 'ROOT';
 $password	= '';
 $database	= 'test';
 

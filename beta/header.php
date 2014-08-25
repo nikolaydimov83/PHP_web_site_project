@@ -9,24 +9,37 @@
 	<link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<h1>Forum borum fushkii</h1>
+<h1>My forum</h1>
 	<div id="wrapper">
-	<div id="menu">
-		<a class="item" href="index.php">Home</a> -
-		<a class="item" href="create_topic.php">Create a topic</a> -
-		<a class="item" href="create_cat.php">Create a category</a>
+		<form action="search.php" method="GET"> 
+			<b>Enter Search Term:</b> <input type="text" name="term" size="50"> 
+			<b>Results:</b> 
+			<select name="results"> 
+				<option>10</option> 
+				<option>20</option> 
+				<option>50</option> 
+			</select><br> 
+				<input type="submit" value="Search"> 
+		</form>
+				
 
-        <div id="userbar">
-            <?php
-            if($_SESSION['signed_in'])
-            {
-                echo 'Hello <b>' . htmlentities($_SESSION['user_name']) . '</b>. Not you? <a class="item" href="signout.php">Sign out</a>';
-            }
-            else
-            {
-                echo '<a class="item" href="signin.php">Sign in</a> or <a class="item" href="signup.php">create an account</a>';
-            }
-            ?>
-        </div>
+
+	<div id="menu">
+		<a class="item" href="/forum/branches/newver/beta/index.php">Home</a> -
+		<a class="item" href="/forum/branches/newver/beta/create_topic.php">Create a topic</a> -
+		<a class="item" href="/forum/cbranches/newver/beta/create_cat.php">Create a category</a>
+		
+		<div id="userbar">
+		<?php
+		if($_SESSION['signed_in'])
+		{
+			echo 'Hello <b>' . htmlentities($_SESSION['user_name']) . '</b>. Not you? <a class="item" href="signout.php">Sign out</a>';
+		}
+		else
+		{
+			echo '<a class="item" href="signin.php">Sign in</a> or <a class="item" href="signup.php">create an account</a>';
+		}
+		?>
+		</div>
 	</div>
 		<div id="content">

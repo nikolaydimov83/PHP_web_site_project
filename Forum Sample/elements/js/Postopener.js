@@ -1,7 +1,7 @@
 
 var page = 0;
 var offset = page*20;
-var currentCategory = null; 
+var currentCategory;
 function openPost(thread){
 	var currentID = 'post' + thread.getAttribute('postid').toString();  
 	thread.id = currentID;
@@ -14,7 +14,7 @@ function openPost(thread){
 
 }
 function openCategory(category){
-	if (currentCategory !== 'category' + category.getAttribute('catid').tostring) {
+	if (currentCategory !== 'category' + category.getAttribute('catid').toString()) {
 		currentCategory = 'category'+category.getAttribute('catid').toString();
 		var toGet = category.getAttribute('catid');
 		category.id = currentCategory;
@@ -72,10 +72,11 @@ function createPostElement(id, subject, views, replies, date, poster, details) {
 	element.setAttribute('replies', replies);
 	element.setAttribute('date', date);
 	element.setAttribute('details', details);
-	element.addEventListener('onclick', function() {
-		openPost(element);
-	});
+	element.setAttribute('onclick', 'openPost(this)');
 	$( "#postdiv" ).append(element);
+	element.id = "currentpost";
+	$( "#currentpost" ).hide();
+	$( "#currentpost" ).fadeIn('600');
 
 }
 function getAnswers(offset, postid){
