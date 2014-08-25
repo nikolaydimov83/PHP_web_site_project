@@ -14,7 +14,7 @@ div{
 
 }
 #posthead{
-	width: 80%;
+	width: 100%;
 	height: 120px;
 	margin-right: auto;
 	margin-left:auto;
@@ -25,12 +25,19 @@ div{
   	overflow: hidden;
   	box-sizing: border-box;
 }
+#content{
+	width: 100%;
+	display: block;
+	height: 100%;
+	top:0;
+}
 div{
 	display: inline-block;
 	text-align: center;
 	vertical-align: middle;
 	position: relative;
 	top: 20%;
+	user-select:none;
 
 }
 span{
@@ -45,6 +52,7 @@ span{
 	font-size: 1.3em;
 	text-align: left;
 	text-transform: capitalize;
+	pointer-events:none;
 }
 .postViews{
 	font-size: 1.3em;
@@ -62,7 +70,7 @@ div .notation{
 	font-size: 0.8em;
 }
 #ripple{
-	color: #ffda00;
+	color: #fffba9;
 	position: absolute;
 	box-sizing:border-box;
 	top: 0;

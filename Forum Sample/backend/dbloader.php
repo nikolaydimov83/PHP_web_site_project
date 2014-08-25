@@ -1,7 +1,7 @@
 <?php
 // These are constants 
 define("DB_HOST", $_SERVER['HTTP_HOST'] );
-define("DB_USERNAME", "");
+define("DB_USERNAME", "root");
 define("DB_PASSWORD", "");
 class DatabaseGetter
 {
@@ -28,7 +28,7 @@ class DatabaseGetter
         //Sets the query so that when the query is executed it returns every value from the specified tabled ordered by ID;
         $query = "SELECT * FROM $table ORDER BY id $order";
         //Executes the query and returns the result
-        $result = mysqli_query($this->con, $query) or die("Wrong String!");
+        $result = mysqli_query($this->con, $query) or die("Wrong String!". mysqli_error($this->con));
         return $result;
         
     }
@@ -39,14 +39,13 @@ class DatabaseGetter
         $result = mysqli_query($this->con, $query) or die("Wrong String!");
         return $result;
     }
-    public function FindData($table, $parameter, $parameterValue, $order="DESC"){
-        $this->con->connect() or die("Cannot connect to DB");
-        $query = "SELECT * FROM $table WHERE $parameter='$parameterValue' BY $order";
-        $result = mysqli_query($this->con, $query) or die("Wrong String!");
+    public function FindData($query){
+        $this->con->real_connect("$this->host", "$this->username", "$this->password", "$this->db_name") or die("error:".mysqli_connect_error());
+        $result = mysqli_query($this->con, $query) or die("Wrong String!" . mysqli_error($this->con));
         return $result;
     }
     public function UpdateData($table, $row, $parameter, $newvalue){
-        $this->con->connect() or die("Cannot connect to DB");
+        $this->con->real_connect("$this->host", "$this->username", "$this->password", "$this->db_name") or die("error:".mysqli_connect_error());
         $query = "UPDATE $table SET $parameter='$newvalue' WHERE id='$row'";
         mysqli_query($this->con, $query) or die("Wrong String!");
     }

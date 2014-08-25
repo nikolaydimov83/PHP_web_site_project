@@ -41,7 +41,7 @@ else
 					topic_cat
 				FROM
 					topics
-				WHERE
+				WHERE	
 					topic_cat = " . mysql_real_escape_string($_GET['id']);
 		
 		$result = mysql_query($sql);

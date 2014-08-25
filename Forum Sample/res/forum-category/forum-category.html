@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../core-collapse/core-collapse.html">
+<link href="../paper-shadow/paper-shadow.html" rel="import">
+<polymer-element name="forum-category" attributes="image catname description catid" role="button" >
+    <template>
+        <link rel="stylesheet" href="forum-category.css">
+        <div id="body" on-click={{toggle}}>
+            <paper-ripple id="ripple" initialOpacity="1" opacityDecayVelocity="2"></paper-ripple>
+            <paper-shadow></paper-shadow>
+            <template if="{{image}}">
+                <div id="image">
+                    <span>{{image}}</span>
+                </div>
+            </template>
+            <div id="header">
+                <span>{{catname}}</span>
+            </div>
+            <hr>
+
+            <core-collapse id="collapse" opened="true"> 
+                <div id="description">
+                    <span>{{description}}</span>
+                </div>
+            </core-collapse>
+        </div>
+    </template>
+    <script>
+            Polymer('forum-category', {
+                created: function(){
+                        description= '';
+                        image= '';
+                        catid= '';
+                        z= 1;
+                    },
+                    ready: function() {
+                        this.globals = [this.$.catid, this.$.catname];
+                        console.log(this.$.catid);
+                        console.log(this.$.catname);
+                        console.log(this.globals);
+
+                    },
+                    observe: {
+                        catid : 'validate',
+                        catname : 'validate'
+                    },
+                    toggle: function(){
+                        var done;
+                        if (typeof done === 'undefined') {
+                            done = false;  
+                        }
+                        if (!done){
+                            console.log(done);
+                            done = true;
+                            this.$.collapse.opened = false;
+                            this.$.ripple.style.display = "none"; 
+                        }
+                    },
+            });            
+    </script>
+</polymer-element>

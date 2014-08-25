@@ -1,0 +1,41 @@
+<link rel="import" href="../polymer/polymer.html">
+<link href="../paper-shadow/paper-shadow.html" rel="import">
+<polymer-element name="forum-answer" attributes="answername postnum poster date details z" role="button" >
+    <template>
+        <link rel="stylesheet" href="forum-answer.css">
+        <div class="body">
+            <paper-shadow></paper-shadow>           
+            <div class="head">  
+                
+                <div class="answer">
+                    #<span>{{postnum}}</span>
+                </div>
+                <div class="poster">
+                    <strong>{{answername}}</strong> by<span><strong> {{poster}} </strong></span>
+                </div>
+                <div class="date">
+                    at <span>{{date}}</span>
+                </div>
+            </div>
+            <div class="content">
+                <div class="Outercontainer">
+                    {{details}}
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+            Polymer('forum-answer', {
+                publish:{
+                    answername: '',
+                    postnum: '',
+                    date: '',
+                    details: '',
+                    poster: '',
+                    z: 1,
+                },
+                ready: function(){
+                }
+            });
+    </script>
+</polymer-element>

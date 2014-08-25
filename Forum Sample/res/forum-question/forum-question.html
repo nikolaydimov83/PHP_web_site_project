@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer.html">
+<link href="../paper-shadow/paper-shadow.html" rel="import">
+<polymer-element name="forum-question" attributes="poster topic date content z" role="button" >
+    <template>
+        <link rel="stylesheet" href="forum-question.css">
+        <div id="body">
+            <paper-shadow></paper-shadow>
+            <div id="head">
+                <div class="id">
+                    #<span><em>0</em></span>
+                </div>
+                <div class="poster">
+                   <span><strong>{{topic}}</strong></span> by <span><strong>{{poster}}</strong></span>
+                </div>
+                <div class="date">
+                   at <span>{{date}}</span>
+                </div>
+            </div>
+            <div id="content">
+                <div id="OP">{{content}}</div>
+            </div>
+        </div>
+    </template>
+    <script>
+            Polymer('forum-question', {
+                    topic: '',
+                    poster: '',
+                    date: '',
+                    content: '',
+                    z: 3,
+            });
+    </script>
+</polymer-element>

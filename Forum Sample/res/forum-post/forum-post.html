@@ -1,48 +1,48 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link href="../paper-shadow/paper-shadow.html" rel="import">
-<polymer-element name="forum-post" attributes="id topic views replies date postdetails z" role="button" >
+<polymer-element name="forum-post" attributes="opened postid topic views replies date detail z" role="button" >
     <template>
         <link rel="stylesheet" href="forum-post.css">
         <div id="posthead">
-            <paper-shadow></paper-shadow>
-            <paper-ripple id="ripple"></paper-ripple>
-            <div class="postID">
-                #<span>{{id}}</span>
-            </div>
-            <div class="postTopic" >
-                <span>{{topic}}</span>
-            </div>
-            <div class="postViews">
-                <span>{{views}}</span>
-                <br>
-                <span class="notation">Views</span>
-            </div>
-            <div class="postReplies">
-                <span>{{replies}}</span>
-                <br>
-                <span class="notation">Replies</span>
-            </div>
-            <div class="postLastPost">
+            <paper-shadow></paper-shadow>            
+            <div id="content">
+            <paper-ripple id="ripple" initialOpacity="0.8" opacityDecayVelocity="2"></paper-ripple>
+                <div class="postID">
+                    #<span>{{postid}}</span>
+                </div>
+                <div class="postTopic" >
+                    <span>{{topic}}</span>
+                </div>
+                <div class="postViews">
+                    <span>{{views}}</span>
+                    <br>
+                    <span class="notation">Views</span>
+                </div>
+                <div class="postReplies">
+                    <span>{{replies}}</span>
+                    <br>
+                    <span class="notation">Replies</span>
+                </div>
+                <div class="postLastPost">
 
-                <span class="notation">Posted on</span>
-                <br>
-                <span>{{date}}</span>
+                    <span class="notation">Posted on</span>
+                    <br>
+                    <span>{{date}}</span>
+                </div>
             </div>
         </div>
     </template>
     <script>
             Polymer('forum-post', {
-                publish:{
-                    id: '',
+                    opened: 0,
+                    postid: '',
                     date: '',
                     views: '',
                     replies: '',
                     topic: '',
-                    z: '1'
-                },
-                ready: function(){
-                }
+                    detail: '',
+                    z: 1,
             });
     </script>
 </polymer-element>
