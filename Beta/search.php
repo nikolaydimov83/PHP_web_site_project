@@ -1,10 +1,17 @@
 <?php
-mysql_connect("localhost", "USERNAME", "PASSWORD");
-mysql_select_db("test");
 
-$sql = mysql_query("SELECT * FROM searchengine WHERE pagecontent LIKE '%$_GET[term]%' LIMIT 0,$_GET[results]");
-while($ser = mysql_fetch_array($sql)) { echo "<h2><a href='$ser[pageurl]'>$ser[pageurl]</a></h2>"; }
+$link = mysqli_connect("localhost", "", "","test") or
+    die("Could not connect: " . mysql_error());
+
+$searchExp=$_GET['term'];
+$numberResults=$_GET['results'];
+$sql1 = mysqli_query($link,"SELECT * FROM searchengine WHERE pagecontent LIKE '%$searchExp%'");
+
+while($ser = mysqli_fetch_assoc($sql1)){
+	 echo "<h2><a href='$ser[pageurl]'>$ser[pageurl]</a></h2>"; 
+}
 
 ?>
-<hr>
+
+
 <a href="./index.php">Go Back</a>
