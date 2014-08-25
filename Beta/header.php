@@ -25,9 +25,9 @@
 
 
 	<div id="menu">
-		<a class="item" href="/forum/index.php">Home</a> -
-		<a class="item" href="/forum/create_topic.php">Create a topic</a> -
-		<a class="item" href="/forum/create_cat.php">Create a category</a>
+		<a class="item" href="/forum/branches/newver/beta/index.php">Home</a> -
+		<a class="item" href="/forum/branches/newver/beta/create_topic.php">Create a topic</a> -
+		<a class="item" href="/forum/cbranches/newver/beta/create_cat.php">Create a category</a>
 		
 		<div id="userbar">
 		<?php
