@@ -11,6 +11,19 @@
 <body>
 <h1>My forum</h1>
 	<div id="wrapper">
+		<form action="search.php" method="GET"> 
+			<b>Enter Search Term:</b> <input type="text" name="term" size="50"> 
+			<b>Results:</b> 
+			<select name="results"> 
+				<option>10</option> 
+				<option>20</option> 
+				<option>50</option> 
+			</select><br> 
+				<input type="submit" value="Search"> 
+		</form>
+				
+
+
 	<div id="menu">
 		<a class="item" href="/forum/index.php">Home</a> -
 		<a class="item" href="/forum/create_topic.php">Create a topic</a> -
