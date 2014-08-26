@@ -2,12 +2,16 @@
 var page = 0;
 var offset = page*20;
 var currentCategory;
+var categoryID;
 function openPost(thread){
 	var currentID = 'post' + thread.getAttribute('postid').toString();  
 	thread.id = currentID;
 	var postid = thread.getAttribute('postid');
 
-	var threadContainer = createQuestionElement("Mr. Nigger", thread.getAttribute("date"), thread.getAttribute("detail"), thread.getAttribute('topic'));
+	var posterName = getThreadPoster(thread);
+	var threadContainer = createQuestionElement(posterName, thread.getAttribute("date"), thread.getAttribute("detail"), thread.getAttribute('topic'));
+
+	document.getElementById('backbutton').setAttribute('onclick', 'goBackPosts()');
 	destroyPosts(thread.id);
 	animateTransition(thread.id, threadContainer);
 	animateHeader(thread.getAttribute('topic'));
@@ -17,7 +21,11 @@ function openCategory(category){
 	if (currentCategory !== 'category' + category.getAttribute('catid').toString()) {
 		currentCategory = 'category'+category.getAttribute('catid').toString();
 		var toGet = category.getAttribute('catid');
+		categoryID = category;
 		category.id = currentCategory;
+		category.setAttribute('finished', true);
+		$( "#backbutton" ).fadeIn();
+		document.getElementById('backbutton').setAttribute('onclick', 'goBackCategories()');
 
 		destroyCategories(category.id);
 		animateHeader(category.getAttribute('catname'));
@@ -25,15 +33,30 @@ function openCategory(category){
 	}
 
 }
+function getThreadPoster(thread) {
+	var synchttp = $.ajax({
+		url: 'backend/ownergetter.php',
+		type: 'GET',
+		dataType: 'text',
+		async: true,
+		data: {getname: 'true', threadID: thread.getAttribute('poster')},
+	})
+	.done(function() {
+		var result = synchttp.responseText;
+		console.log(result);
+		document.getElementById("activepost").setAttribute('poster', result);
+	});
+	
+}
 function destroyCategories(givenID) {
 	var element = document.getElementsByTagName('forum-category');
 	for (var i = element.length - 1; i >= 0; i--) {
 		if (element[i].id !== givenID) {
 			element[i].id = "remove";
-			deleteElement(element[i]);
 			$( "#currentreply" ).hide();
+    		$("#remove").slideUp('400');
 			$( "#currentreply" ).fadeIn('600');
-			$( "#remove" ).fadeOut('fast');
+			deleteElement(element[i]);
 	    }
 	}
 }
@@ -71,7 +94,8 @@ function createPostElement(id, subject, views, replies, date, poster, details) {
 	element.setAttribute('views', views);
 	element.setAttribute('replies', replies);
 	element.setAttribute('date', date);
-	element.setAttribute('details', details);
+	element.setAttribute('detail', details);
+	element.setAttribute('poster',poster);
 	element.setAttribute('onclick', 'openPost(this)');
 	$( "#postdiv" ).append(element);
 	element.id = "currentpost";
@@ -134,7 +158,33 @@ function createAnswerElement(num, name, poster, date, details){
 	$( "#currentreply" ).fadeIn('600');
 	//document.appendChild(element);
 }
-
+function goBackPosts(){
+	currentCategory = null;
+	getPosts(0, categoryID.getAttribute('catid'));
+	removeChildrenFromNode(document.getElementById("replydiv"));
+	$( "#activepost" ).remove();
+	document.getElementById('backbutton').setAttribute('onclick', 'goBackCategories()');
+}
+function goBackCategories(){
+	currentCategory = null;
+	removeChildrenFromNode(document.getElementById('catdiv'));
+	destroyPosts();
+	getCategories();
+	document.getElementById('backbutton').style.display = "none";
+}
+function getCategories() {
+	$.get('backend/getcategories.php', function(data) {
+		console.log(data);
+		$('#catdiv').append(data);
+	});
+}
+function removeChildrenFromNode(node) {
+	if(node.hasChildNodes()) {
+		while(node.childNodes.length >= 1 ) {
+			node.removeChild(node.firstChild);
+		}
+	}
+}
 function animateTransition(currentID, replacement){
 
 	var toget = document.getElementById(currentID).getAttribute('postid');

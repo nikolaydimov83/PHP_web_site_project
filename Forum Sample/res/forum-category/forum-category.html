@@ -2,7 +2,7 @@
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 <link rel="import" href="../core-collapse/core-collapse.html">
 <link href="../paper-shadow/paper-shadow.html" rel="import">
-<polymer-element name="forum-category" attributes="image catname description catid" role="button" >
+<polymer-element name="forum-category" attributes="image catname description catid finished" role="button" >
     <template>
         <link rel="stylesheet" href="forum-category.css">
         <div id="body" on-click={{toggle}}>
@@ -31,6 +31,7 @@
                         description= '';
                         image= '';
                         catid= '';
+                        finished= '';
                         z= 1;
                     },
                     ready: function() {
@@ -40,21 +41,13 @@
                         console.log(this.globals);
 
                     },
+                    finishedChanged: function() {
+                        this.$.collapse.toggle('400');
+                        this.$.ripple.remove();
+                    },
                     observe: {
                         catid : 'validate',
                         catname : 'validate'
-                    },
-                    toggle: function(){
-                        var done;
-                        if (typeof done === 'undefined') {
-                            done = false;  
-                        }
-                        if (!done){
-                            console.log(done);
-                            done = true;
-                            this.$.collapse.opened = false;
-                            this.$.ripple.style.display = "none"; 
-                        }
                     },
             });            
     </script>

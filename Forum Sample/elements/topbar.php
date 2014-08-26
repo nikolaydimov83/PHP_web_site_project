@@ -1,3 +1,12 @@
+<?php 
+define("ROOT_URL", 'http://' . $_SERVER['HTTP_HOST'] . '/forom/');
+define("ROOT_PATH", dirname(__FILE__));
+$sesstat = session_status();
+if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
+	session_start();
+}
+	 ?>
+
 <!doctype html>
 <html>
     <head>
@@ -5,11 +14,11 @@
         <title>Untitled</title>
         <script src="res/platform/platform.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <link rel="import" href='res/forum-question/forum-question.html'>
-        <link rel="import" href='res/forum-post/forum-post.html'>
-        <link rel="import" href='res/forum-answer/forum-answer.html'>
-        <link rel="import" href='res/forum-category/forum-category.html'>
-        <link rel="import" href='./res/paper-button/paper-button.html'>
+        <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-question/forum-question.html\""?>>
+        <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-post/forum-post.html\""?>>
+        <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-answer/forum-answer.html\""?>>
+        <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-category/forum-category.html\""?>>
+        <link rel="import" <?php echo 'href="' . ROOT_URL . "res/paper-button/paper-button.html\""?>>
         <style>
         body{
         	margin: 0px;
@@ -33,6 +42,18 @@
 				text-overflow: ellipsis;
 				width: 50%;
 				overflow: hidden;
+			}
+			#title a{
+				text-decoration: none;
+				color:white;
+				width: 100%;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				transition: color 0.5s ease;
+			}
+			#title a:hover{
+				color: #FF355E;
+				transition: color 0.5s ease;
 			}
 			#topbarcontain *{
 				display: inline-block;
@@ -76,12 +97,31 @@
 				margin-right: auto;
 				text-transform: capitalize;
 			}
+			#backbutton{
+				max-height: 100%;
+				display: none;
+				float:left;
+				vertical-align: middle;
+				text-align: center;
+				padding: 25px;
+				font-size: 35px;
+				box-shadow: 2px;
+				user-select: none;
+				--moz-user-select: none;
+				-webkit-user-select:none;
+			}
+			#backbutton:hover{
+
+				background-color: #FF355E;
+				transition: background 0.8s ease; 
+			}
 			#activearea{
 				width: 80%;
 				margin-left: auto;
 				margin-right: auto;
 				min-height: 100%
 			}
+
 			paper-button.colored[raisedButton]{
 				background-color: cadetblue;
 				color:white;
@@ -91,23 +131,23 @@
     <body>
 		<header>
 			<div id="topbar">
+			<div id="backbutton"><<</div>
 			<div id="topbarcontain">
-				<div id="title"><h2 id="titleText">	Lorem ipsum dolor sit amet, consectetur.</h2></div>
+				<div id="title"><h2 id="titleText"><a <?php echo 'href="' . ROOT_URL . "index.php\""?>>Lorem ipsum dolor sit amet, consectetur.</a></h2></div>
 				<div id="userinfo">
-					<div id="userdiv"><span>Welcome, <?php if (!empty($_SESSION['user'])) {
-						echo "<strong>", $_SESSION['user'], "</strong>";
+					<div id="userdiv"><span>Welcome, <?php if (!empty($_SESSION['user_name'])) {
+						echo "<strong>", $_SESSION['user_name'], "</strong>";
 					}else{
 						echo "guest";
 						} ?>!</span></div>
 
 						<br>
 						<div id="useractions">
-					<?php if (empty($_SESSION['user'])){ ?>
+					<?php if (empty($_SESSION['user_name'])){ ?>
 					Please
-						<a href="">Register</a> or
-						<a href="">Login</a>
+						<a href="./forum/signup.php">Register</a> or
+						<a href= <?php echo '"' . ROOT_URL ."forum/signin.php".'"'?>>Login</a>
 					<?php } else{ ?>
-						<button>View</button>
 					<?php } ?>
 					</div>
 				</div>

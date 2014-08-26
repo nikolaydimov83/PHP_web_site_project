@@ -1,16 +1,42 @@
 		<footer>
 			<div>
-			<?php while ($row = mysqli_fetch_assoc($result)) { ?>
 				<div>
 					<ul>
-						<li><h4> <?php echo $row['devName']; ?> </h4></li>
-						<li><?php echo "<a href='", $row['devLinkedIn'], "\">"; ?>LinkedIn</a></li>
-						<li><?php echo "<a href='", $row['devBlog'], "\">"; ?>Blog</a></li>
-						<li><?php echo "<a href='", $row['devGit'], "\">"; ?>Git</a></li>
-						<li><?php echo "<a href='", $row['devSoftuni'], "\">"; ?>Softuni Profile</a></li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+					</ul>
+					<ul>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+					</ul>
+					<ul>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+					</ul>
+					<ul>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+					</ul>
+					<ul>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
+						<li>Dev Name - Dev Credits</li>
 					</ul>
 				</div>
-				<?php } ?>
 			</div>
 		</footer>
     </body>
