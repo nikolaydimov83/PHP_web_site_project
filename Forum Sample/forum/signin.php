@@ -1,11 +1,10 @@
 <?php
 //signin.php
 include 'connect.php';
-include '../elements/topbar.php'
+include '../elements/topbar.php';
 ?>
-<div><paper-shadow></paper-shadow><h3>Sign in!</h3><br>
+<div id="signin">
 <?php
-echo '<h3>Sign in</h3><br />';
 
 //first, check if the user is already signed in. If that is the case, there is no need to display this page
 if(isset($_SESSION['signed_in']) && $_SESSION['signed_in'] == true)
@@ -18,11 +17,14 @@ else
 	{
 		/*the form hasn't been posted yet, display it
 		  note that the action="" will cause the form to post to the same page it is on */
-		?> '<form method="post" action="">
-			Username: <input type="text" name="user_name" /><br />
-			Password: <input type="password" name="user_pass"><br />
-			<input type="submit" value="Sign in" />
-		 </form>';
+		?>
+        <form method="post" action="">
+			<label for="username">Username</label>
+            <input type="text" name="user_name" id="username" class="inputfield-prop"/><br />
+			<label for="pass">Password</label>
+            <input type="password" name="user_pass" id="pass" class="inputfield-prop"><br />
+			<input type="submit" value="Sign in" class="signin-button"/>
+		 </form>
 		 </div>
 	 <?php 
 	}
@@ -105,5 +107,6 @@ else
 			}
 		}
 	}
+    include '../forum/footer.php';
 }
 ?>

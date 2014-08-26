@@ -19,6 +19,9 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
         <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-answer/forum-answer.html\""?>>
         <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-category/forum-category.html\""?>>
         <link rel="import" <?php echo 'href="' . ROOT_URL . "res/paper-button/paper-button.html\""?>>
+        <link rel="stylesheet" href="../styles/footer.css" type="text/css">
+        <link rel="stylesheet" href="../styles/signup.css" type="text/css">
+        <link rel="stylesheet" href="../styles/signin.css" type="text/css">
         <style>
         body{
         	margin: 0px;
@@ -113,7 +116,7 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
 			#backbutton:hover{
 
 				background-color: #FF355E;
-				transition: background 0.8s ease; 
+				transition: background 0.8s ease;
 			}
 			#activearea{
 				width: 80%;

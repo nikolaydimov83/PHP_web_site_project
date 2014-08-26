@@ -1,0 +1,16 @@
+#footer {
+    height: 100px;
+    width: 100%;
+    display: block;
+    background-color: #66023C;
+    margin-bottom: 20px;
+    color:white;
+    margin-top: 20px;
+}
+
+#footer p {
+    margin: 0px auto;
+    padding-top: 15px;
+    text-align: center;
+    font-style: italic;
+}
