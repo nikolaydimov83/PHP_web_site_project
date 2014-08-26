@@ -18,10 +18,11 @@
 	<?php } ?>
 	</div>
 	<div id="postdiv">
-		<div id="replydiv">
+		
+	</div>
+	<div id="replydiv">
 			
 		</div>
-	</div>
 		<a href= <?php echo '"' . ROOT_URL . "forum/create_topic.php\""; ?>><paper-button raisedButton class="colored">Create Topic</paper-button></a>
 		<?php if (!empty($_SESSION)){ 
 			if ($_SESSION['user_level'] == 1) {	?>

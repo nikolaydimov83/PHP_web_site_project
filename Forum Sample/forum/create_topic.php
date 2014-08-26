@@ -85,11 +85,13 @@ else
 						topics(topic_subject,
 							   topic_date,
 							   topic_cat,
-							   topic_by)
+							   topic_by,
+							   topic_details)
 				   VALUES('" . mysql_real_escape_string($_POST['topic_subject']) . "',
 							   NOW(),
 							   " . mysql_real_escape_string($_POST['topic_cat']) . ",
-							   " . $_SESSION['user_id'] . "
+							   " . $_SESSION['user_id'] . ",
+							  '" . mysql_real_escape_string($_POST['post_content']) . "'
 							   )";
 					 
 			$result = mysql_query($sql);
@@ -106,18 +108,18 @@ else
 				//retrieve the id of the freshly created topic for usage in the posts query
 				$topicid = mysql_insert_id();
 				
-				$sql = "INSERT INTO
-							posts(post_content,
-								  post_date,
-								  post_topic,
-								  post_by)
-						VALUES
-							('" . mysql_real_escape_string($_POST['post_content']) . "',
-								  NOW(),
-								  " . $topicid . ",
-								  " . $_SESSION['user_id'] . "
-							)";
-				$result = mysql_query($sql);
+				// $sql = "INSERT INTO
+				// 			posts(post_content,
+				// 				  post_date,
+				// 				  post_topic,
+				// 				  post_by)
+				// 		VALUES
+				// 			('" . mysql_real_escape_string($_POST['post_content']) . "',
+				// 				  NOW(),
+				// 				  " . $topicid . ",
+				// 				  " . $_SESSION['user_id'] . "
+				// 			)";
+				// $result = mysql_query($sql);
 				
 				if(!$result)
 				{

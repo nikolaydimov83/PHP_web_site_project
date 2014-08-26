@@ -58,6 +58,9 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
 				color: #FF355E;
 				transition: color 0.5s ease;
 			}
+			forum-answer{
+				display: block;
+			}
 			#topbarcontain *{
 				display: inline-block;
 			}
@@ -79,17 +82,17 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
 			#userdiv{
 				font-size: 1.3em;
 			}
-			#useractions a{
+			#userdiv a{
 
 				color: #FF355E;
 				text-decoration: none;
 				padding: 5px;
-				font-size: 1.2em;
+				font-size: 1em;
 				font-weight: bold;
 
 				transition: color 0.4s ease;
 			}
-			#useractions a:hover{
+			#userdiv a:hover{
 				color: white;
 				transition: color 0.4s ease;
 			}
@@ -139,10 +142,14 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
 				<div id="title"><h2 id="titleText"><a <?php echo 'href="' . ROOT_URL . "index.php\""?>>Lorem ipsum dolor sit amet, consectetur.</a></h2></div>
 				<div id="userinfo">
 					<div id="userdiv"><span>Welcome, <?php if (!empty($_SESSION['user_name'])) {
-						echo "<strong>", $_SESSION['user_name'], "</strong>";
+						echo "<strong>", $_SESSION['user_name'], "</strong>!";?>
+						<br>
+						<a href= <?php echo '"' . ROOT_URL ."forum/signout.php".'"'?>>Sign Out</a>
+
+						<?php
 					}else{
 						echo "guest";
-						} ?>!</span></div>
+						} ?></span></div>
 
 						<br>
 						<div id="useractions">

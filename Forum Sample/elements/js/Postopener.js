@@ -2,6 +2,7 @@
 var page = 0;
 var offset = page*20;
 var currentCategory;
+var categoryName;
 var categoryID;
 function openPost(thread){
 	var currentID = 'post' + thread.getAttribute('postid').toString();  
@@ -21,6 +22,7 @@ function openCategory(category){
 	if (currentCategory !== 'category' + category.getAttribute('catid').toString()) {
 		currentCategory = 'category'+category.getAttribute('catid').toString();
 		var toGet = category.getAttribute('catid');
+		categoryName = category.getAttribute('catname');
 		categoryID = category;
 		category.id = currentCategory;
 		category.setAttribute('finished', true);
@@ -51,13 +53,9 @@ function getThreadPoster(thread) {
 function destroyCategories(givenID) {
 	var element = document.getElementsByTagName('forum-category');
 	for (var i = element.length - 1; i >= 0; i--) {
-		if (element[i].id !== givenID) {
 			element[i].id = "remove";
-			$( "#currentreply" ).hide();
-    		$("#remove").slideUp('400');
-			$( "#currentreply" ).fadeIn('600');
-			deleteElement(element[i]);
-	    }
+			$("#remove").hide();
+    		deleteElement(element[i]);
 	}
 }
 function updateThread(replies){
@@ -97,10 +95,9 @@ function createPostElement(id, subject, views, replies, date, poster, details) {
 	element.setAttribute('detail', details);
 	element.setAttribute('poster',poster);
 	element.setAttribute('onclick', 'openPost(this)');
-	$( "#postdiv" ).append(element);
+
 	element.id = "currentpost";
-	$( "#currentpost" ).hide();
-	$( "#currentpost" ).fadeIn('600');
+	$( "#postdiv" ).append(element);
 
 }
 function getAnswers(offset, postid){
@@ -118,7 +115,7 @@ function getAnswers(offset, postid){
 			var response = JSON.parse(xmlhttp.responseText);
 			var elements = [];
 			for(var i=0; i<response.length;i++){	
-					createAnswerElement(response[i].a_id, response[i].a_name, response[i].a_email, response[i].a_datetime, response[i].a_answer);
+					createAnswerElement(response[i].post_id, response[i].post_by, response[i].post_date, response[i].post_content);
 				}			
 		}); 
 }
@@ -129,9 +126,7 @@ function destroyPosts(givenID){
 		if (element[i].id !== givenID) {
 			element[i].id = "remove";
 			deleteElement(element[i]);
-			$( "#currentreply" ).hide();
-			$( "#currentreply" ).fadeIn('600');
-			$( "#remove" ).fadeOut('fast');
+			$( "#remove" ).hide();
 	    }
 	}
 }
@@ -145,20 +140,20 @@ function createQuestionElement(poster, date, content,topic){
 	element.style.display="none";
 	return element;
 }
-function createAnswerElement(num, name, poster, date, details){
+function createAnswerElement(num, poster, date, details){
 	var element = document.createElement('forum-answer'); 
 	element.setAttribute('poster', poster);
 	element.setAttribute('date', date);
 	element.setAttribute('details', details);
-	element.setAttribute('answername', name);
 	element.setAttribute('postnum', num);
 	element.id = "currentreply";
 	$( "#replydiv" ).append(element);
-	$( "#currentreply" ).hide();
-	$( "#currentreply" ).fadeIn('600');
+	$( "#currentreply" ).slideDown('600');
 	//document.appendChild(element);
 }
 function goBackPosts(){
+
+	animateHeader(categoryName);
 	currentCategory = null;
 	getPosts(0, categoryID.getAttribute('catid'));
 	removeChildrenFromNode(document.getElementById("replydiv"));
@@ -166,6 +161,7 @@ function goBackPosts(){
 	document.getElementById('backbutton').setAttribute('onclick', 'goBackCategories()');
 }
 function goBackCategories(){
+	animateHeader("Index");
 	currentCategory = null;
 	removeChildrenFromNode(document.getElementById('catdiv'));
 	destroyPosts();
@@ -189,10 +185,10 @@ function animateTransition(currentID, replacement){
 
 	var toget = document.getElementById(currentID).getAttribute('postid');
 	$( "#" + currentID ).replaceWith(replacement);
-	$("#activepost").fadeIn('slow', function() {
+	$("#activepost").fadeIn(function() {
 		replacement.style.display = "block";
-		getAnswers(offset, toget);
 	});
+	getAnswers(offset, toget);
 }
 function animateHeader(text){
 	$( "#titleText" ).fadeOut( "100", function() {
