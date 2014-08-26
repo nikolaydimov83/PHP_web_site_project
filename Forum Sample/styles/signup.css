@@ -1,0 +1,42 @@
+h3 {
+    text-align: center;
+}
+
+#register-form {
+    margin: 0px auto;
+    text-align: center;
+    border: 1px solid;
+    width: 30%;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #66023C;
+}
+
+#register-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+.submit-button {
+    margin-top: 15px;
+    border-radius: 10px;
+    background-color: #66023C;
+    color: white;
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+}
+
+.submit-button:hover {
+    background-color: #FF355E;
+    cursor: pointer;
+}
+
+.inputfield-prop {
+    border-radius: 10px;
+    border: 0;
+    width: 200px;
+    height: 20px;
+    box-shadow: 0 0 10px 0 white;
+}

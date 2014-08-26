@@ -1,7 +1,7 @@
 <?php
 //signout.php
 include 'connect.php';
-include 'header.php';
+include '../elements/topbar.php';
 
 echo '<h2>Sign out</h2>';
 
@@ -13,7 +13,7 @@ if($_SESSION['signed_in'] == true)
 	$_SESSION['user_name'] = NULL;
 	$_SESSION['user_id']   = NULL;
 
-	echo 'Succesfully signed out, thank you for visiting.';
+	echo 'Successfully signed out, thank you for visiting.';
 }
 else
 {

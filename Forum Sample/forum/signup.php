@@ -3,18 +3,21 @@
 include 'connect.php';
 include '../elements/topbar.php';
 
-echo '<h3>Sign up</h3><br />';
-
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {?>
-    <form method="post" action="">
-	Username: <input type="text" name="user_name" /><br />
-	Password: <input type="password" name="user_pass"><br />
-	Password again: <input type="password" name="user_pass_check"><br />
-	E-mail: <input type="email" name="user_email"><br />
-   	<input type="submit" value="Add category" />
+<div id="register-form">
+        <form method="post" action="">
+        <label for="username">Username</label>
+        <input type="text" name="user_name" id="username" class="inputfield-prop"/><br />
+        <label for="pass">Password</label>
+        <input type="password" name="user_pass" id="pass" class="inputfield-prop"/><br />
+        <label for="repeat-password">Repeat password</label>
+        <input type="password" name="user_pass_check" id="repeat-password" class="inputfield-prop"/><br />
+        <label for="email">E-mail</label>
+        <input type="email" name="user_email"id="email"  class="inputfield-prop"/><br />
+        <input type="submit" value="Register form" class="submit-button"/>
  	 </form>
-
+</div>
 <?php 
 }
 else
