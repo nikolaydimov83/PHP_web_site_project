@@ -22,11 +22,11 @@
 			
 		</div>
 	</div>
-		<paper-button raisedButton>Post Topic</paper-button>
-		<a href= <?php echo '"' . ROOT_URL . "forum/create_topic.php"; ?>><paper-button raisedButton class="colored">Create Topic</paper-button></a>
-		<?php if (!empty($_SESSION['user_level'])){ 
+		<a href= <?php echo '"' . ROOT_URL . "forum/create_topic.php\""; ?>><paper-button raisedButton class="colored">Create Topic</paper-button></a>
+		<?php if (!empty($_SESSION)){ 
 			if ($_SESSION['user_level'] == 1) {	?>
-			<a href= <?php echo '"' . ROOT_URL . "forum/create_cat.php"; ?>><paper-button raisedButton class="red colored">Create Category</paper-button></a>
+				<a href= <?php echo '"' . ROOT_URL . "forum/create_cat.php\"";?>><paper-button raisedButton class="red colored">Create Category</paper-button></a>
 			
-		<?php }} ?>
+		<?php }
+		} ?>
 </section>
