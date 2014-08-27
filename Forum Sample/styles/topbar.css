@@ -82,7 +82,8 @@
 				vertical-align: middle;
 				text-align: center;
 				padding: 25px;
-				font-size: 35px;
+				padding-top:15px;
+				font-size: 45px;
 				box-shadow: 2px;
 				user-select: none; 
 				--moz-user-select: none;
@@ -125,4 +126,7 @@
 			}
 			.red{
 				background-color: red !important;
+			}
+			.blue{
+				background-color: cadetblue !important;
 			}

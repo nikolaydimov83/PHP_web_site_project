@@ -1,5 +1,5 @@
 <?php 
-define("ROOT_URL", 'http://' . $_SERVER['HTTP_HOST'] . '/Forum Sample/');
+define("ROOT_URL", 'http://' . $_SERVER['HTTP_HOST'] . '/forom/');
 define("ROOT_PATH", dirname(__FILE__));
 $sesstat = session_status();
 if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
@@ -11,7 +11,7 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Untitled</title>
+        <title>PHP Forum Teamwork</title>
         <script src="res/platform/platform.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <link rel="import" <?php echo 'href="' . ROOT_URL . "res/forum-question/forum-question.html\"";?>>
@@ -26,9 +26,9 @@ if (empty($_SESSION) && $sesstat == PHP_SESSION_NONE) {
     <body>
 		<header>
 			<div id="topbar">
-			<div id="backbutton"><<</div>
+			<div id="backbutton">‹‹</div>
 			<div id="topbarcontain">
-				<div id="title"><h2 id="titleText"><a <?php echo 'href="' . ROOT_URL . "index.php\""?>>Lorem ipsum dolor sit amet, consectetur.</a></h2></div>
+				<div id="title"><h2 id="titleText"><a <?php echo 'href="' . ROOT_URL . "index.php\""?>>PHP Forum Teamwork</a></h2></div>
 				<div id="userinfo">
 					<div id="userdiv"><span>Welcome, <?php if (!empty($_SESSION['user_name'])) {
 						echo "<strong>", $_SESSION['user_name'], "</strong>!";?>
