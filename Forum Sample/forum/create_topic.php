@@ -140,7 +140,7 @@ else
 					$pagedata = file_get_contents($topicUrl);
 					$pagedata = str_replace("'","",$pagedata);
 					mysql_query("INSERT INTO searchengine VALUES ('','$topicUrl','$pagedata')");
-					echo "URL Added.<br><a href='./addurl.php'>Continue...</a>";
+					echo "URL Added.<br><a href='../index.php'>Continue...</a>";
 				}
 			}
 		}
