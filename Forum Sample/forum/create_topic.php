@@ -2,9 +2,11 @@
 //create_topic.php
 include 'connect.php';
 include '../elements/topbar.php';
+?>
 
-echo '<h2>Create a topic</h2>';
+<link rel="stylesheet" <?php echo 'href="' . ROOT_URL . "styles/createtopic.css\"" ?> >
 
+<?php
 if(empty($_SESSION['signed_in']))
 {
 	//the user is not signed in
@@ -47,21 +49,25 @@ else
 			}
 			else
 			{
-		
-				echo '<form method="post" action="">
-					Subject: <input type="text" name="topic_subject" /><br />
-					Category:'; 
+
+				echo '<div id="create-topic">
+                    <h2>Create a topic</h2>
+                    <form method="post" action="">
+					<label for="subject">Subject</label>
+					<input type="text" name="topic_subject" id="subject"/><br />
+					<label for="cat">Category</label>';
 				
-				echo '<select name="topic_cat">';
+				echo '<select name="topic_cat" id="cat">';
 					while($row = mysql_fetch_assoc($result))
 					{
 						echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
 					}
 				echo '</select><br />';	
 					
-				echo 'Message: <br /><textarea name="post_content" /></textarea><br /><br />
-					<input type="submit" value="Create topic" />
-				 </form>';
+				echo '<label for="message">Message</label> <br />
+                    <textarea name="post_content" id="message"/></textarea><br /><br />
+					<input type="submit" value="Create topic" class="submit-button"/>
+				 </form></div>';
 			}
 		}
 	}
@@ -140,7 +146,7 @@ else
 					$pagedata = file_get_contents($topicUrl);
 					$pagedata = str_replace("'","",$pagedata);
 					mysql_query("INSERT INTO searchengine VALUES ('','$topicUrl','$pagedata')");
-					echo "URL Added.<br><a href='../index.php'>Continue...</a>";
+					echo "URL Added.<br><a href='./addurl.php'>Continue...</a>";
 				}
 			}
 		}
