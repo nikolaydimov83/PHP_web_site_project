@@ -1,3 +1,4 @@
+
 <?php
 //signup.php
 include 'connect.php';
@@ -5,6 +6,7 @@ include '../elements/topbar.php';
 
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {?>
+<link rel="stylesheet" <?php echo 'href="' . ROOT_URL . "styles/signup.css\"" ?> >
 <div id="register-form">
         <form method="post" action="">
         <label for="username">Username</label>

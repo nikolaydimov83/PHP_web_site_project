@@ -19,15 +19,23 @@
             <div id="content">
                 <div id="OP">{{content}}</div>
             </div>
+                <div id="actions">
+                
+            </div>
         </div>
     </template>
     <script>
             Polymer('forum-question', {
+                publish:{
                     topic: '',
                     poster: '',
                     date: '',
                     content: '',
                     z: 3,
+                },
+                    ready: function(){
+                    getButtons(this.poster , this.$.actions);
+                }
             });
     </script>
 </polymer-element>

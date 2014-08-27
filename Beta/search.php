@@ -1,6 +1,6 @@
 <?php
 
-$link = mysqli_connect("localhost", "", "","test") or
+$link = mysqli_connect("localhost", "", "","forumdb") or
     die("Could not connect: " . mysql_error());
 
 $searchExp=$_GET['term'];
@@ -14,4 +14,4 @@ while($ser = mysqli_fetch_assoc($sql1)){
 ?>
 
 
-<a href="./index.php">Go Back</a>
+	<a href="./index.php">Go Back</a>

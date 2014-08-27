@@ -12,11 +12,25 @@ div{
 	font-family: "Open Sans", "SegoeUI", "Roboto Cond";
 	font-size: 1em;
 }
+#actions{
+	padding: 15px;
+	border-top: 1px solid #aaa;
+	display: block;
+	margin-bottom: 0;
+}
+#actions * {
+	padding: 0;
+	margin-bottom: 0;
+}
+paper-button #content{
+	padding : 5px;
+}
 #body{
+	
+	background-color: white;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	text-overflow: l;
 	position: relative;
   	border-radius: inherit;
   	overflow: hidden;

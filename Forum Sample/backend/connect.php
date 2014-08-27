@@ -2,7 +2,7 @@
 session_start();
 //connect.php
 $server	    = 'localhost';
-$username	= 'ROOT';
+$username	= 'root';
 $password	= '';
 $database	= 'forumdb';
 

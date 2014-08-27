@@ -1,42 +1,7 @@
 		<footer>
-			<div>
-				<div>
-					<ul>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-					</ul>
-					<ul>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-					</ul>
-					<ul>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-					</ul>
-					<ul>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-					</ul>
-					<ul>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-						<li>Dev Name - Dev Credits</li>
-					</ul>
-				</div>
+			<div id="footer">
+    			<p>All rights reserved &copy;</p>
+    			<p>Design by TEAM "BREATH OF HEAVEN - DIOSMA"</p>
 			</div>
 		</footer>
     </body>

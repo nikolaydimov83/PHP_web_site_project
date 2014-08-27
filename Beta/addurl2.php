@@ -1,3 +1,4 @@
+
 <?php
 mysql_connect("localhost", "nikolay", "topboy");
 mysql_select_db("test");

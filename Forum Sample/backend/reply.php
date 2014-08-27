@@ -1,8 +1,6 @@
 <?php
 //create_cat.php
 include 'connect.php';
-include 'header.php';
-
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
 	//someone is calling the file directly, which we don't want
@@ -25,7 +23,7 @@ else
 						  post_by) 
 				VALUES ('" . $_POST['reply-content'] . "',
 						NOW(),
-						" . mysql_real_escape_string($_GET['id']) . ",
+						" . mysql_real_escape_string($_POST['threadid']) . ",
 						" . $_SESSION['user_id'] . ")";
 						
 		$result = mysql_query($sql);
@@ -34,12 +32,6 @@ else
 		{
 			echo 'Your reply has not been saved, please try again later.';
 		}
-		else
-		{
-			echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
-		}
 	}
 }
-
-include 'footer.php';
 ?>

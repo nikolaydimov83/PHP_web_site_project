@@ -3,6 +3,7 @@
 include 'connect.php';
 include '../elements/topbar.php';
 ?>
+<link rel="stylesheet" <?php echo 'href="' . ROOT_URL . "styles/signin.css\"" ?> >
 <div id="signin">
 <?php
 

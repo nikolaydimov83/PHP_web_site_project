@@ -21,13 +21,14 @@
 		
 	</div>
 	<div id="replydiv">
-			
-		</div>
+	</div>
+
+	<div id="answerdiv">
+	</div>
 		<a href= <?php echo '"' . ROOT_URL . "forum/create_topic.php\""; ?>><paper-button raisedButton class="colored">Create Topic</paper-button></a>
-		<?php if (!empty($_SESSION)){ 
-			if ($_SESSION['user_level'] == 1) {	?>
+		<?php if (!empty($_SESSION['user_level'])):  
+			if ($_SESSION['user_level'] == 1) : ?>
 				<a href= <?php echo '"' . ROOT_URL . "forum/create_cat.php\"";?>><paper-button raisedButton class="red colored">Create Category</paper-button></a>
-			
-		<?php }
-		} ?>
+		<?php endif; endif ?>
 </section>
+	

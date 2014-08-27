@@ -1,7 +1,7 @@
 <?php
 //create_cat.php
 include 'connect.php';
-include 'header.php';
+include '../elements/topbar.php';
 
 echo '<h2>Create a category</h2>';
 if($_SESSION['signed_in'] == false | $_SESSION['user_level'] != 1 )
@@ -40,5 +40,5 @@ else
 	}
 }
 
-include 'footer.php';
+include '../elements/footer.php';
 ?>

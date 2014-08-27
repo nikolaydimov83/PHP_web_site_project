@@ -22,6 +22,9 @@
                     {{details}}
                 </div>
             </div>
+            <div id="actions">
+                
+            </div>
         </div>
     </template>
     <script>
@@ -35,6 +38,7 @@
                     z: 1,
                 },
                 ready: function(){
+                    getButtons(this.poster , this.$.actions);
                 }
             });
     </script>

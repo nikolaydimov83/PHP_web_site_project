@@ -14,8 +14,6 @@
 			$data = $datget->FindData($query);
 			$quickres = mysqli_fetch_assoc($data);
 			$value['post_by'] = $quickres['user_name'];
-
-
 		}
 	}
 	if (isset($result)) {

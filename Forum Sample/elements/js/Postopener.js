@@ -4,19 +4,32 @@ var offset = page*20;
 var currentCategory;
 var categoryName;
 var categoryID;
+var currentThread;
+var replyOpen;
 function openPost(thread){
 	var currentID = 'post' + thread.getAttribute('postid').toString();  
 	thread.id = currentID;
+	currentThread = thread.getAttribute('postid');
 	var postid = thread.getAttribute('postid');
 
 	var posterName = getThreadPoster(thread);
 	var threadContainer = createQuestionElement(posterName, thread.getAttribute("date"), thread.getAttribute("detail"), thread.getAttribute('topic'));
 
+	addView(thread.getAttribute('postid').toString());
 	document.getElementById('backbutton').setAttribute('onclick', 'goBackPosts()');
 	destroyPosts(thread.id);
 	animateTransition(thread.id, threadContainer);
 	animateHeader(thread.getAttribute('topic'));
 
+}
+function addView(givenID) {
+	$.ajax({
+		url: 'backend/viewcounter.php',
+		type: 'POST',
+		data: {viewedTopicID: parseInt(givenID)},
+	}).done(function(){
+		console.log(givenID);
+	});
 }
 function openCategory(category){
 	if (currentCategory !== 'category' + category.getAttribute('catid').toString()) {
@@ -45,7 +58,6 @@ function getThreadPoster(thread) {
 	})
 	.done(function() {
 		var result = synchttp.responseText;
-		console.log(result);
 		document.getElementById("activepost").setAttribute('poster', result);
 	});
 	
@@ -62,7 +74,6 @@ function updateThread(replies){
 	for (var i = 0; i < replies.length; i++){
 		$( "activepost" ).append(replies[i]);
 		replies[i].id = "activereply";
-		$( "activereply" ).slideUp(fast);
 		document.appendChild(replies[i]);
 	}
 }
@@ -77,7 +88,9 @@ function getPosts(offset, catid){
 		})
 	.done(function() {
 		var response = JSON.parse(xmlhttp.responseText);
+		var elements = [];
 		for(var i=0; i<response.length;i++){	
+			elements.push(response[i]);
 			createPostElement(response[i].topic_id, response[i].topic_subject, response[i].topic_views, response[i].topic_replies, response[i].topic_date, response[i].topic_by, response[i].topic_details);
 		}	
 	});
@@ -99,9 +112,9 @@ function createPostElement(id, subject, views, replies, date, poster, details) {
 	element.id = "currentpost";
 	$( "#postdiv" ).append(element);
 
+
 }
 function getAnswers(offset, postid){
-	console.log("I LIVE");
 	var xmlhttp = $.ajax(
 		{
 		type: "GET",
@@ -110,11 +123,9 @@ function getAnswers(offset, postid){
 		data: {getvalues: "true", postid: postid},
 
 		}).done(function(){
-			console.log(xmlhttp.responseText);
-
 			var response = JSON.parse(xmlhttp.responseText);
 			var elements = [];
-			for(var i=0; i<response.length;i++){	
+			for(var i=response.length-1;i>=0;i--){	
 					createAnswerElement(response[i].post_id, response[i].post_by, response[i].post_date, response[i].post_content);
 				}			
 		}); 
@@ -124,9 +135,8 @@ function destroyPosts(givenID){
 	var element = document.getElementsByTagName("forum-post");
 	for (var i = element.length - 1; i >= 0; i--) {
 		if (element[i].id !== givenID) {
-			element[i].id = "remove";
+			element[i].style.display = "none";
 			deleteElement(element[i]);
-			$( "#remove" ).hide();
 	    }
 	}
 }
@@ -138,6 +148,7 @@ function createQuestionElement(poster, date, content,topic){
 	element.setAttribute('topic', topic);
 	element.id = "activepost";
 	element.style.display="none";
+	getButtons(poster, element);
 	return element;
 }
 function createAnswerElement(num, poster, date, details){
@@ -147,8 +158,9 @@ function createAnswerElement(num, poster, date, details){
 	element.setAttribute('details', details);
 	element.setAttribute('postnum', num);
 	element.id = "currentreply";
+	getButtons(poster, element);
 	$( "#replydiv" ).append(element);
-	$( "#currentreply" ).slideDown('600');
+	$( "#currentreply" ).fadeIn('fast');
 	//document.appendChild(element);
 }
 function goBackPosts(){
@@ -156,7 +168,9 @@ function goBackPosts(){
 	animateHeader(categoryName);
 	currentCategory = null;
 	getPosts(0, categoryID.getAttribute('catid'));
-	removeChildrenFromNode(document.getElementById("replydiv"));
+	destroyPosts();
+	removeChildrenFromNode(document.getElementById('postdiv'));
+	removeChildrenFromNode(document.getElementById('replydiv'));
 	$( "#activepost" ).remove();
 	document.getElementById('backbutton').setAttribute('onclick', 'goBackCategories()');
 }
@@ -170,7 +184,6 @@ function goBackCategories(){
 }
 function getCategories() {
 	$.get('backend/getcategories.php', function(data) {
-		console.log(data);
 		$('#catdiv').append(data);
 	});
 }
@@ -204,3 +217,49 @@ function deleteElement(i) {
 	}, 1000); 
 }
 
+function getButtons(poster, post){
+	var xmlhttp = $.ajax({
+		url: 'elements/postactions.php',
+		type: 'GET',
+		data: {topic_by: poster},
+	})
+	.done(function() {
+		backup = post.id;
+		post.id = "appender";
+		$('#appender').append(xmlhttp.responseText);
+		post.id = backup;
+	});
+}
+
+function getReplyForm(){
+	if (!replyOpen) {
+		replyOpen = true;
+	var xmlhttp = $.ajax({
+		url: 'elements/reply.php',
+		type: 'GET',
+		data: {reply: true}
+	})
+	.done(function() {
+		console.log('sucess');
+		$( "#answerdiv").append(xmlhttp.responseText);
+	});
+}
+}
+
+
+function sendReply(){
+
+	var text = document.getElementById('replytext').value;
+	if (text.length < 20) {
+		alert("needs to be longer than 20 characters");
+	}else{
+		$.ajax({
+			url: 'backend/reply.php',
+			type: 'POST',
+			data: {'reply-content': document.getElementById('replytext').value, 'threadid': currentThread},
+		})
+		.done(function() {
+		});
+		removeChildrenFromNode(document.getElementById("answerdiv"));
+	}
+}

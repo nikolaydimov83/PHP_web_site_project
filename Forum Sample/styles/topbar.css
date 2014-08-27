@@ -1,0 +1,128 @@
+
+        body{
+        	margin: 0px;
+        	font-family: "Open Sans", "Roboto", helvetica, arial, sans-serif;
+        	background-color: #ccc ;
+
+        }
+			#topbar{
+				height: 100px;
+				width: 100%;
+				display: block;
+				background-color: #66023C;
+				margin-bottom: 20px;
+				color:white;
+			}
+			#title{
+				float: left;
+				display: inline-block;
+				height: 100%;
+				font-weight: lighter;
+				font-size: 1.5em;
+				text-overflow: ellipsis;
+				width: 50%;
+				overflow: hidden;
+			}
+			#title a{
+				text-decoration: none;
+				color:white;
+				width: 100%;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				transition: color 0.5s ease;
+			}
+			#title a:hover{
+				color: #FF355E;
+				transition: color 0.5s ease;
+			}
+			#topbarcontain *{
+				display: inline-block;
+			}
+			#topbar h2{
+				width: 100%;
+				margin: 0px;
+				margin-top: 20px;
+				vertical-align: middle;
+				overflow: hidden;
+				height: inherit;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			#userinfo{
+				float:right;
+				margin-top: 20px;
+				margin-right: 5%;
+			}
+			#userdiv{
+				font-size: 1.3em;
+			}
+			#userinfo a{
+				color: #FF355E;
+				text-decoration: none;
+				padding: 5px;
+				font-size: 1em;
+				font-weight: bold;
+				transition: color 0.4s ease;
+			}
+			#userdiv a:hover{
+				color: white;
+				transition: color 0.4s ease;
+			}
+			#topbarcontain{
+				width: 80%;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				text-transform: capitalize;
+			}
+			#backbutton{
+				max-height: 100%;
+				display: none;
+				float:left;
+				vertical-align: middle;
+				text-align: center;
+				padding: 25px;
+				font-size: 35px;
+				box-shadow: 2px;
+				user-select: none; 
+				--moz-user-select: none;
+				-webkit-user-select:none;
+			}
+			.blue{
+				color: cadetblue;
+			}
+			#backbutton:hover{
+
+				background-color: #FF355E;
+				transition: background 0.8s ease;
+			}
+			#answerdiv textarea{
+				width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			#post *{
+				margin-left: auto;
+				margin-right: auto;
+			}
+			#activearea{
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				min-height: 100%;
+
+				height: auto;
+			}
+			#post{
+				display: block;
+				margin-left: auto;
+				margin-right: auto ;
+			}
+
+			paper-button.colored[raisedButton]{
+				background-color: cadetblue;
+				color:white;
+			}
+			.red{
+				background-color: red !important;
+			}
